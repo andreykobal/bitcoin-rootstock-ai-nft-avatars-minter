@@ -11,6 +11,8 @@ function MintNFT() {
   const [attributes, setAttributes] = useState([]); // You'll have to build an interface to manage this array
   const [imageFile, setImageFile] = useState(null);
   const [animationFile, setAnimationFile] = useState(null);
+  const [uploadStatus, setUploadStatus] = useState("");
+
 
   const client = new NFTStorage({ token: NFT_STORAGE_TOKEN });
 
@@ -28,6 +30,8 @@ function MintNFT() {
   const mintToken = async () => {
     if (window.ethereum) {
       try {
+        setUploadStatus("Uploading metadata...");
+
         // Upload files
         const imageURL = await uploadFileToIPFS(imageFile);
         const animationURL = await uploadFileToIPFS(animationFile);
@@ -69,10 +73,14 @@ function MintNFT() {
 
         await transaction;
 
+        setUploadStatus(""); // Reset the status
+
         alert('Token Minted!');
       } catch (error) {
         console.error("Error minting token: ", error);
         alert("Error minting token");
+        setUploadStatus(""); // Reset the status
+
       }
     } else {
       alert('Ethereum not detected! Please install and setup MetaMask.');
@@ -100,6 +108,7 @@ function MintNFT() {
         <input type="file" onChange={e => handleFileChange(e, setAnimationFile)} />
       </div>
       <button onClick={mintToken}>Mint</button>
+      <div>{uploadStatus}</div>
     </div>
   );
 }

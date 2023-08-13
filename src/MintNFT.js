@@ -123,12 +123,12 @@ function MintNFT() {
     <div>
       <h2>Mint Your NFT</h2>
       <div>
-        <label>Description:</label>
-        <input type="text" value={description} onChange={e => setDescription(e.target.value)} />
-      </div>
-      <div>
         <label>Name:</label>
         <input type="text" value={name} onChange={e => setName(e.target.value)} />
+      </div>
+      <div>
+        <label>Description:</label>
+        <input type="text" value={description} onChange={e => setDescription(e.target.value)} />
       </div>
       {/* Add interface for attributes here */}
       <div>
@@ -136,7 +136,7 @@ function MintNFT() {
         <input type="file" onChange={e => handleFileChange(e, setImageFile)} />
       </div>
       <div>
-        <label>Animation:</label>
+        <label>GLB:</label>
         <input type="file" onChange={e => handleFileChange(e, setAnimationFile)} />
       </div>
 

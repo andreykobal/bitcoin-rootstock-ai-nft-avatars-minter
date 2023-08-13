@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>NFT Minter</h1>
+        <h1>AI NFT Minter</h1>
         <MintNFT />
       </header>
     </div>

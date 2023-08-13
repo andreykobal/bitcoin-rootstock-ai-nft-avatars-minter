@@ -86,14 +86,14 @@ function MintNFT() {
         // Continue with your minting process
         const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
         const web3 = new Web3(window.ethereum);
-
-        const contractAddress = '0x1Dfcb33950422020c93dA6Cb0aB5e7c70Ce1a79C';
+  
+        const contractAddress = '0x9ECB90F11D7c609A9dD093f30a9201943D8036DB';
         const contract = new web3.eth.Contract(contractABI, contractAddress);
-
-        const gasEstimate = await contract.methods.mintItem(tokenURI).estimateGas({ from: accounts[0] });
+  
+        const gasEstimate = await contract.methods.mint(accounts[0], tokenURI).estimateGas({ from: accounts[0] });
         const gasPriceWei = '1500000000';
-
-        const transaction = contract.methods.mintItem(tokenURI).send({
+  
+        const transaction = contract.methods.mint(accounts[0], tokenURI).send({
           from: accounts[0],
           gas: gasEstimate,
           gasPrice: gasPriceWei

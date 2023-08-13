@@ -53,9 +53,45 @@ function MintNFT() {
     return `https://ipfs.io/ipfs/${cid}`;
   };
 
+  async function switchToGoerli() {
+    try {
+      const CHAIN_ID = '0x5'; // Goerli Test Network
+      await window.ethereum.request({
+        method: 'wallet_switchEthereumChain',
+        params: [{ chainId: CHAIN_ID }],
+      });
+    } catch (switchError) {
+      if (switchError.code === 4902) {
+        try {
+          await window.ethereum.request({
+            method: 'wallet_addEthereumChain',
+            params: [{
+              chainId: '0x5',
+              chainName: 'Goerli',
+              nativeCurrency: {
+                name: 'ETH',
+                symbol: 'ETH',
+                decimals: 18
+              },
+              rpcUrls: ['https://goerli.infura.io/v3/076e36dcd6c6468da918dd54435a94f9'], // replace with your Infura Project ID
+              blockExplorerUrls: ['https://goerli.etherscan.io/'],
+            }],
+          });
+        } catch (addError) {
+          console.error('Failed to add Goerli network', addError);
+        }
+      } else {
+        console.error('Failed to switch to Goerli network', switchError);
+      }
+    }
+  }
+
   const mintToken = async () => {
     if (window.ethereum) {
       try {
+        // Switch to Goerli Test Network
+        await switchToGoerli();
+
         setUploadStatus("Uploading metadata...");
 
         // Upload files

@@ -155,36 +155,57 @@ function MintNFT() {
         }
     };
 
-    return (
-        <div>
-            <h2>Mint Your NFT</h2>
-            <div>
-                <label>Name:</label>
-                <input type="text" value={name} onChange={e => setName(e.target.value)} />
-            </div>
-            <div>
-                <label>Description:</label>
-                <input type="text" value={description} onChange={e => setDescription(e.target.value)} />
-            </div>
-            {/* Add interface for attributes here */}
-            <div>
-                <label>Image:</label>
-                <input type="file" onChange={e => handleFileChange(e, setImageFile)} />
-            </div>
-            <div>
-                <label>GLB:</label>
-                <input type="file" onChange={e => handleFileChange(e, setAnimationFile)} />
-            </div>
 
-            {/* Default attributes interface */}
+    const labelStyle = {
+        display: 'block',
+        marginBottom: '8px',
+        marginTop: '8px',
+        fontWeight: 'bold',
+        fontSize: '14px',
+        textAlign: 'left'
+
+
+    };
+
+    const inputStyle = {
+        width: '100%',
+        padding: '8px',
+        boxSizing: 'border-box'
+    };
+
+    const divStyle = {
+        marginBottom: '8px'
+    };
+
+    return (
+        <div style={{ maxWidth: '300px', width: '300px', margin: '0 auto' }}>
+            <h2>Mint Your AI NFT</h2>
+            <div style={divStyle}>
+                <label style={labelStyle}>Name:</label>
+                <input type="text" value={name} onChange={e => setName(e.target.value)} style={inputStyle} />
+            </div>
+            <div style={divStyle}>
+                <label style={labelStyle}>Description:</label>
+                <input type="text" value={description} onChange={e => setDescription(e.target.value)} style={inputStyle} />
+            </div>
+            <div style={divStyle}>
+                <label style={labelStyle}>Image:</label>
+                <input type="file" onChange={e => handleFileChange(e, setImageFile)} style={inputStyle} />
+            </div>
+            <div style={divStyle}>
+                <label style={labelStyle}>GLB:</label>
+                <input type="file" onChange={e => handleFileChange(e, setAnimationFile)} style={inputStyle} />
+            </div>
             <div>
+                {/* Default attributes interface */}
                 {Object.entries(defaultAttributes).map(([traitType, value]) => (
-                    <div key={traitType}>
-                        <label>{traitType}:</label>
+                    <div key={traitType} style={divStyle}>
+                        <label style={labelStyle}>{traitType}:</label>
                         {traitType === "Voice" ? (
                             <select
                                 value={value}
                                 onChange={e => handleDefaultAttributeChange(traitType, e.target.value)}
+                                style={inputStyle}
                             >
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
@@ -195,27 +216,29 @@ function MintNFT() {
                                 type="text"
                                 value={value}
                                 onChange={e => handleDefaultAttributeChange(traitType, e.target.value)}
+                                style={inputStyle}
                             />
                         )}
                     </div>
                 ))}
             </div>
-
-            {/* Custom attributes interface */}
             <div>
+                {/* Custom attributes interface */}
                 {customAttributes.map((attribute, index) => (
-                    <div key={index}>
+                    <div key={index} style={divStyle}>
                         <input
                             type="text"
                             placeholder="Trait Type"
                             value={attribute.trait_type}
                             onChange={e => updateCustomAttribute(index, "trait_type", e.target.value)}
+                            style={inputStyle}
                         />
                         <input
                             type="text"
                             placeholder="Value"
                             value={attribute.value}
                             onChange={e => updateCustomAttribute(index, "value", e.target.value)}
+                            style={inputStyle}
                         />
                     </div>
                 ))}

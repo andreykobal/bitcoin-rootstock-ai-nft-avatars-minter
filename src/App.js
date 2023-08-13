@@ -5,10 +5,7 @@ import MintNFT from './MintNFT';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>AI NFT Minter</h1>
-        <MintNFT />
-      </header>
+      <MintNFT />
     </div>
   );
 }

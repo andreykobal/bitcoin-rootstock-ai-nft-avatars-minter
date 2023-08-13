@@ -86,6 +86,33 @@ function MintNFT() {
         }
     }
 
+    const fetchRandomData = async () => {
+        try {
+            const response = await fetch("http://localhost:3001/generate-completion", {
+                method: "POST"
+            });
+            const data = await response.json();
+            const content = JSON.parse(data.content); // Parse the content string
+    
+            // Destructure and set data to the states
+            setName(content.name);
+            setDescription(content.description);
+    
+            // Assuming attributes are always in the same order
+            // If not, you might want to loop through and find the right attribute
+            setDefaultAttributes(prevAttributes => ({
+                ...prevAttributes,
+                Voice: content.attributes[0].value,
+                Age: content.attributes[1].value,
+                Profession: content.attributes[2].value,
+                Mood: content.attributes[3].value,
+                Race: content.attributes[4].value
+            }));
+        } catch (error) {
+            console.error("Error fetching random data:", error);
+        }
+    };
+
     const mintToken = async () => {
         if (window.ethereum) {
             try {
@@ -246,6 +273,8 @@ function MintNFT() {
             </div>
 
             <button onClick={mintToken}>Mint</button>
+            <br/>
+            <button onClick={fetchRandomData}>Random</button>
             <div>{uploadStatus}</div>
         </div>
     );

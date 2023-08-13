@@ -12,8 +12,9 @@ function MintNFT() {
     const [imageFile, setImageFile] = useState(null);
     const [animationFile, setAnimationFile] = useState(null);
     const [uploadStatus, setUploadStatus] = useState("");
+    const [generatingStatus, setGeneratingStatus] = useState("");
     const [defaultAttributes, setDefaultAttributes] = useState({
-        Voice: "",
+        Voice: "Male", // Set a default value
         Age: "",
         Profession: "",
         Mood: "",
@@ -88,7 +89,9 @@ function MintNFT() {
 
     const fetchRandomData = async () => {
         try {
-            const response = await fetch("http://localhost:3001/generate-completion", {
+            setGeneratingStatus("Generating random metadata...");
+
+            const response = await fetch("https://ai-nft-openai-server-78b2502171bf.herokuapp.com/generate-completion", {
                 method: "POST"
             });
             const data = await response.json();
@@ -102,14 +105,19 @@ function MintNFT() {
             // If not, you might want to loop through and find the right attribute
             setDefaultAttributes(prevAttributes => ({
                 ...prevAttributes,
-                Voice: content.attributes[0].value,
+                //Voice: content.attributes[0].value,
                 Age: content.attributes[1].value,
                 Profession: content.attributes[2].value,
                 Mood: content.attributes[3].value,
                 Race: content.attributes[4].value
             }));
+
+            setGeneratingStatus(""); // Clear the generating status
         } catch (error) {
             console.error("Error fetching random data:", error);
+
+            setGeneratingStatus(""); // Clear the generating status
+
         }
     };
 
@@ -213,7 +221,7 @@ function MintNFT() {
             </div>
             <div style={divStyle}>
                 <label style={labelStyle}>Description:</label>
-                <input type="text" value={description} onChange={e => setDescription(e.target.value)} style={inputStyle} />
+                <textarea value={description} onChange={e => setDescription(e.target.value)} style={{ ...inputStyle, resize: 'none', minHeight: '100px' }} />
             </div>
             <div style={divStyle}>
                 <label style={labelStyle}>Image:</label>
@@ -276,6 +284,7 @@ function MintNFT() {
             <br/>
             <button onClick={fetchRandomData}>Random</button>
             <div>{uploadStatus}</div>
+            <div>{generatingStatus}</div>
         </div>
     );
 }

@@ -3,7 +3,7 @@ import Web3 from 'web3';
 import contractABI from './ContractABI';
 import { NFTStorage, File, Blob } from 'nft.storage';
 
-const NFT_STORAGE_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweEQ4RmZGNTk4ZjE5NjQ5NTY0RjRFZmY4RjBlNEVFYTU4NDQ2OUNGRjIiLCJpc3MiOiJuZnQtc3RvcmFnZSIsImlhdCI6MTY1NzMwMjQ2ODYwMywibmFtZSI6InRlbmsifQ.ZgqRfmAB3F_Sj6DCKZtGx-vPojcq_ZwLyyKyvbrnXnM'; // Put your token here
+const NFT_STORAGE_TOKEN = process.env.REACT_APP_NFT_STORAGE_TOKEN;
 
 function MintNFT() {
   const [description, setDescription] = useState('');

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Web3 from 'web3';
 import contractABI from './ContractABI';
 import { NFTStorage, File, Blob } from 'nft.storage';
@@ -21,6 +21,31 @@ function MintNFT() {
         Race: ""
     });
     const [customAttributes, setCustomAttributes] = useState([]);
+
+    const [avaturnGLB, setAvaturnGLB] = useState(null);
+    const avaturnIframeRef = useRef(null);
+
+    useEffect(() => {
+        function handleIframeEvent(event) {
+            let json;
+            try {
+                json = JSON.parse(event.data);
+            } catch (error) {
+                console.log("Error parsing the event data.");
+                return;
+            }
+    
+            if (json.source !== "avaturn" || json.eventName !== "v2.avatar.exported") return;
+    
+            console.log("Received an avatar GLB from Avaturn.");
+            setAvaturnGLB(json.data.url);
+        }
+    
+        window.addEventListener("message", handleIframeEvent);
+        return () => window.removeEventListener("message", handleIframeEvent);
+    }, []);
+    
+
 
 
 
@@ -48,11 +73,18 @@ function MintNFT() {
         setFile(file);
     };
 
-    const uploadFileToIPFS = async (file) => {
-        const blob = new Blob([file]);
+    const uploadFileToIPFS = async (fileOrUrl) => {
+        let blob;
+        if (typeof fileOrUrl === 'string') {
+            const response = await fetch(fileOrUrl);
+            blob = await response.blob();
+        } else {
+            blob = new Blob([fileOrUrl]);
+        }
         const cid = await client.storeBlob(blob);
         return `https://ipfs.io/ipfs/${cid}`;
     };
+    
 
     async function switchToGoerli() {
         try {
@@ -96,11 +128,11 @@ function MintNFT() {
             });
             const data = await response.json();
             const content = JSON.parse(data.content); // Parse the content string
-    
+
             // Destructure and set data to the states
             setName(content.name);
             setDescription(content.description);
-    
+
             // Assuming attributes are always in the same order
             // If not, you might want to loop through and find the right attribute
             setDefaultAttributes(prevAttributes => ({
@@ -131,7 +163,8 @@ function MintNFT() {
 
                 // Upload files
                 const imageURL = await uploadFileToIPFS(imageFile);
-                const animationURL = await uploadFileToIPFS(animationFile);
+                const animationURL = avaturnGLB ? await uploadFileToIPFS(avaturnGLB) : await uploadFileToIPFS(animationFile);
+
 
                 // Construct metadata
                 const metadata = {
@@ -222,78 +255,92 @@ function MintNFT() {
     };
 
     return (
-        <div style={{ maxWidth: '400px', width: '400px', margin: '0 auto' }}>
-            <div style={divStyle}>
-                <label style={labelStyle}>Name:</label>
-                <input type="text" value={name} onChange={e => setName(e.target.value)} style={inputStyle} />
-            </div>
-            <div style={divStyle}>
-                <label style={labelStyle}>Description:</label>
-                <textarea value={description} onChange={e => setDescription(e.target.value)} style={{ ...inputStyle, resize: 'none', minHeight: '100px' }} />
-            </div>
-            <div style={divStyle}>
-                <label style={labelStyle}>Image:</label>
-                <input type="file" onChange={e => handleFileChange(e, setImageFile)} style={inputStyle} />
-            </div>
-            <div style={divStyle}>
-                <label style={labelStyle}>GLB:</label>
-                <input type="file" onChange={e => handleFileChange(e, setAnimationFile)} style={inputStyle} />
-            </div>
-            <div>
-                {/* Default attributes interface */}
-                {Object.entries(defaultAttributes).map(([traitType, value]) => (
-                    <div key={traitType} style={divStyle}>
-                        <label style={labelStyle}>{traitType}:</label>
-                        {traitType === "Voice" ? (
-                            <select
-                                value={value}
-                                onChange={e => handleDefaultAttributeChange(traitType, e.target.value)}
-                                style={inputStyle}
-                            >
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
-                                <option value="Robotic">Robotic</option>
-                            </select>
-                        ) : (
+        <>
+            <iframe
+                ref={avaturnIframeRef}
+                src="https://demo.avaturn.dev"
+                width="100%"
+                height="400"
+                frameBorder="0">
+            </iframe>
+            <div style={{ maxWidth: '400px', width: '400px', margin: '0 auto' }}>
+                <div style={divStyle}>
+                    <label style={labelStyle}>Name:</label>
+                    <input type="text" value={name} onChange={e => setName(e.target.value)} style={inputStyle} />
+                </div>
+                <div style={divStyle}>
+                    <label style={labelStyle}>Description:</label>
+                    <textarea value={description} onChange={e => setDescription(e.target.value)} style={{ ...inputStyle, resize: 'none', minHeight: '100px' }} />
+                </div>
+                <div style={divStyle}>
+                    <label style={labelStyle}>Image:</label>
+                    <input type="file" onChange={e => handleFileChange(e, setImageFile)} style={inputStyle} />
+                </div>
+                <div style={divStyle}>
+                    <label style={labelStyle}>GLB:</label>
+                    {
+                        avaturnGLB ?
+                            <div style={{ ...inputStyle, textAlign: 'center', lineHeight: '38px' }}>Avaturn Avatar Used</div> :
+                            <input type="file" onChange={e => handleFileChange(e, setAnimationFile)} style={inputStyle} />
+                    }
+                </div>
+
+                <div>
+                    {/* Default attributes interface */}
+                    {Object.entries(defaultAttributes).map(([traitType, value]) => (
+                        <div key={traitType} style={divStyle}>
+                            <label style={labelStyle}>{traitType}:</label>
+                            {traitType === "Voice" ? (
+                                <select
+                                    value={value}
+                                    onChange={e => handleDefaultAttributeChange(traitType, e.target.value)}
+                                    style={inputStyle}
+                                >
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Robotic">Robotic</option>
+                                </select>
+                            ) : (
+                                <input
+                                    type="text"
+                                    value={value}
+                                    onChange={e => handleDefaultAttributeChange(traitType, e.target.value)}
+                                    style={inputStyle}
+                                />
+                            )}
+                        </div>
+                    ))}
+                </div>
+                <div>
+                    {/* Custom attributes interface */}
+                    {customAttributes.map((attribute, index) => (
+                        <div key={index} style={divStyle}>
                             <input
                                 type="text"
-                                value={value}
-                                onChange={e => handleDefaultAttributeChange(traitType, e.target.value)}
+                                placeholder="Trait Type"
+                                value={attribute.trait_type}
+                                onChange={e => updateCustomAttribute(index, "trait_type", e.target.value)}
                                 style={inputStyle}
                             />
-                        )}
-                    </div>
-                ))}
-            </div>
-            <div>
-                {/* Custom attributes interface */}
-                {customAttributes.map((attribute, index) => (
-                    <div key={index} style={divStyle}>
-                        <input
-                            type="text"
-                            placeholder="Trait Type"
-                            value={attribute.trait_type}
-                            onChange={e => updateCustomAttribute(index, "trait_type", e.target.value)}
-                            style={inputStyle}
-                        />
-                        <input
-                            type="text"
-                            placeholder="Value"
-                            value={attribute.value}
-                            onChange={e => updateCustomAttribute(index, "value", e.target.value)}
-                            style={inputStyle}
-                        />
-                    </div>
-                ))}
-                {/*<button onClick={addCustomAttribute}>Add Custom Trait</button>*/}
-            </div>
+                            <input
+                                type="text"
+                                placeholder="Value"
+                                value={attribute.value}
+                                onChange={e => updateCustomAttribute(index, "value", e.target.value)}
+                                style={inputStyle}
+                            />
+                        </div>
+                    ))}
+                    {/*<button onClick={addCustomAttribute}>Add Custom Trait</button>*/}
+                </div>
 
-            <button style={randomizeButtonStyle} onClick={fetchRandomData}>Randomize</button>
-            <button onClick={mintToken}>Mint</button>
+                <button style={randomizeButtonStyle} onClick={fetchRandomData}>Randomize</button>
+                <button onClick={mintToken}>Mint</button>
 
-            <div>{uploadStatus}</div>
-            <div>{generatingStatus}</div>
-        </div>
+                <div>{uploadStatus}</div>
+                <div>{generatingStatus}</div>
+            </div>
+        </>
     );
 }
 

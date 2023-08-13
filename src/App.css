@@ -70,9 +70,34 @@ button {
   margin-top: 16px;
 }
 
+.mint-container {
+  display: flex;
+  height: 100vh;
+}
+
+.iframeStyle {
+  flexGrow: 2;
+  height: 100%;
+  min-height: 80vh;
+  width: 66%;
+  min-width: 66%;
+  border: none;
+}
+
+.sidebar {
+  flexGrow: 1;
+  maxWidth: 100%;
+  width: 100%;
+  boxSizing: border-box;
+}
+
+
+
+
 @media (max-width: 768px) { 
   .mint-container {
       flex-direction: column; 
+      height: auto;
   }
   .mint-container > * { 
       width: 100%; 

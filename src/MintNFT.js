@@ -255,15 +255,16 @@ function MintNFT() {
     };
 
     return (
-        <div className="mint-container" style={{ display: 'flex', height: '100vh' }}> {/* Flex container */}
+        <div className="mint-container"> {/* Flex container */}
 
             <iframe
                 ref={avaturnIframeRef}
                 src="https://demo.avaturn.dev"
-                style={{ flexGrow: 2, height: '100%', border: 'none' }} // Apply flex-grow
+                className="iframeStyle"
                 >
             </iframe>
-            <div style={{ flexGrow: 1, maxWidth: '33%', width: '100%', padding: '20px', boxSizing: 'border-box' }}>
+            <div className="sidebar">
+                <div style={{padding: '20px'}}>
             <h1 style={{ textAlign: 'center' }}>Mint Your AI NFT Avatar</h1>
 
                 <div style={divStyle}>
@@ -341,6 +342,7 @@ function MintNFT() {
 
                 <div>{uploadStatus}</div>
                 <div>{generatingStatus}</div>
+            </div>
             </div>
         </div>
     );

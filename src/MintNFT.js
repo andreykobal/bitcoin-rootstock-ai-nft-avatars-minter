@@ -12,9 +12,35 @@ function MintNFT() {
   const [imageFile, setImageFile] = useState(null);
   const [animationFile, setAnimationFile] = useState(null);
   const [uploadStatus, setUploadStatus] = useState("");
+  const [defaultAttributes, setDefaultAttributes] = useState({
+    Voice: "",
+    Age: "",
+    Profession: "",
+    Mood: "",
+    Race: ""
+  });
+  const [customAttributes, setCustomAttributes] = useState([]);
+
 
 
   const client = new NFTStorage({ token: NFT_STORAGE_TOKEN });
+
+  const handleDefaultAttributeChange = (traitType, value) => {
+    setDefaultAttributes(prevAttributes => ({
+      ...prevAttributes,
+      [traitType]: value
+    }));
+  };
+
+  const addCustomAttribute = () => {
+    setCustomAttributes(prevAttributes => [...prevAttributes, { trait_type: "", value: "" }]);
+  };
+
+  const updateCustomAttribute = (index, field, value) => {
+    const newAttributes = [...customAttributes];
+    newAttributes[index][field] = value;
+    setCustomAttributes(newAttributes);
+  };
 
   const handleFileChange = (event, setFile) => {
     const file = event.target.files[0];
@@ -38,13 +64,19 @@ function MintNFT() {
 
         // Construct metadata
         const metadata = {
-          description,
-          external_url: "https://ailand.app/",
-          image: imageURL,
-          name,
-          animation_url: animationURL,
-          attributes
-        };
+            description,
+            external_url: "https://ailand.app/",
+            image: imageURL,
+            name,
+            animation_url: animationURL,
+            attributes: [
+              ...Object.entries(defaultAttributes).map(([trait_type, value]) => ({
+                trait_type,
+                value
+              })),
+              ...customAttributes
+            ]
+          };
 
         // Upload metadata
         const metadataBlob = new Blob([JSON.stringify(metadata)]);
@@ -107,6 +139,42 @@ function MintNFT() {
         <label>Animation:</label>
         <input type="file" onChange={e => handleFileChange(e, setAnimationFile)} />
       </div>
+
+      {/* Default attributes interface */}
+      <div>
+        {Object.entries(defaultAttributes).map(([traitType, value]) => (
+          <div key={traitType}>
+            <label>{traitType}:</label>
+            <input
+              type="text"
+              value={value}
+              onChange={e => handleDefaultAttributeChange(traitType, e.target.value)}
+            />
+          </div>
+        ))}
+      </div>
+
+      {/* Custom attributes interface */}
+      <div>
+        {customAttributes.map((attribute, index) => (
+          <div key={index}>
+            <input
+              type="text"
+              placeholder="Trait Type"
+              value={attribute.trait_type}
+              onChange={e => updateCustomAttribute(index, "trait_type", e.target.value)}
+            />
+            <input
+              type="text"
+              placeholder="Value"
+              value={attribute.value}
+              onChange={e => updateCustomAttribute(index, "value", e.target.value)}
+            />
+          </div>
+        ))}
+        <button onClick={addCustomAttribute}>Add Custom Trait</button>
+      </div>
+
       <button onClick={mintToken}>Mint</button>
       <div>{uploadStatus}</div>
     </div>

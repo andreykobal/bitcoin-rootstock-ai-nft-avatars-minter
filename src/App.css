@@ -47,3 +47,25 @@
   color: white;
   font-family: Roboto;  
 }
+
+button {
+  width: 100%;
+  box-sizing: border-box;
+  font-family: inherit;
+  margin: 0;
+  background-image: none;
+  cursor: pointer;
+  line-height: inherit;
+  border-radius: 9999px;
+  border-width: 0;
+  background-color: #fc0ff54d;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  text-transform: uppercase;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255/var(--tw-text-opacity));
+  padding-left: 5rem;
+  padding-right: 5rem;
+  font-size: 18px;
+  margin-top: 16px;
+}

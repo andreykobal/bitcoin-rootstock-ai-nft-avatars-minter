@@ -205,16 +205,24 @@ function MintNFT() {
     const inputStyle = {
         width: '100%',
         padding: '8px',
-        boxSizing: 'border-box'
+        boxSizing: 'border-box',
+        backgroundColor: 'rgba(255, 255, 255, 0.1)',
+        color: 'white',
+        border: 'none',
+        borderRadius: '4px',
+        height: '40px',
     };
 
     const divStyle = {
         marginBottom: '8px'
     };
 
+    const randomizeButtonStyle = {
+        backgroundColor: '#8E52F5',
+    };
+
     return (
-        <div style={{ maxWidth: '300px', width: '300px', margin: '0 auto' }}>
-            <h2>Mint Your AI NFT</h2>
+        <div style={{ maxWidth: '400px', width: '400px', margin: '0 auto' }}>
             <div style={divStyle}>
                 <label style={labelStyle}>Name:</label>
                 <input type="text" value={name} onChange={e => setName(e.target.value)} style={inputStyle} />
@@ -277,12 +285,12 @@ function MintNFT() {
                         />
                     </div>
                 ))}
-                <button onClick={addCustomAttribute}>Add Custom Trait</button>
+                {/*<button onClick={addCustomAttribute}>Add Custom Trait</button>*/}
             </div>
 
+            <button style={randomizeButtonStyle} onClick={fetchRandomData}>Randomize</button>
             <button onClick={mintToken}>Mint</button>
-            <br/>
-            <button onClick={fetchRandomData}>Random</button>
+
             <div>{uploadStatus}</div>
             <div>{generatingStatus}</div>
         </div>

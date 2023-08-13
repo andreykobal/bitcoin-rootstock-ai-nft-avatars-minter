@@ -255,7 +255,7 @@ function MintNFT() {
     };
 
     return (
-        <div style={{ display: 'flex', height: '100vh' }}> {/* Flex container */}
+        <div className="mint-container" style={{ display: 'flex', height: '100vh' }}> {/* Flex container */}
 
             <iframe
                 ref={avaturnIframeRef}

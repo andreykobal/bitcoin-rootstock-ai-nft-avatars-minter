@@ -69,3 +69,17 @@ button {
   font-size: 18px;
   margin-top: 16px;
 }
+
+@media (max-width: 768px) { 
+  .mint-container {
+      flex-direction: column; 
+  }
+  .mint-container > * { 
+      width: 100%; 
+      max-width: 100%;
+  }
+  iframe, 
+  .mint-container > div {
+      height: auto; 
+  }
+}

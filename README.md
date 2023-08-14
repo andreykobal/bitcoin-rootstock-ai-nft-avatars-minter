@@ -16,7 +16,7 @@ This repository hosts a cutting-edge solution that enables users to create, mint
 
 ## Video Demo 
 
-[🌟 Minting AI NFT Avatars on Bitcoin: An Immersive Guide! 🚀 on YouTube](https://www.youtube.com/watch?v=T9QJgNFNJIE)
+[YouTube: 🌟 Minting AI NFT Avatars on Bitcoin: An Immersive Guide! 🚀 ](https://www.youtube.com/watch?v=T9QJgNFNJIE)
 
 ## Demo
 

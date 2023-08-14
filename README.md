@@ -20,7 +20,7 @@ This repository hosts a cutting-edge solution that enables users to create, mint
 [🌟 **Mint Your AI NFT Avatar on AILAND** 🌟](https://simple-nft-minter-xt5p.vercel.app/)
 
 **Step 1: Refill Your Wallet**
-1. 🛠️ Refill your Metamask wallet with testnet Rootstock tokens.
+1. 🛠️ Refill your Metamask wallet with testnet Bitcoin Rootstock tokens.
 2. 🔗 Visit [faucet.rsk.co](https://faucet.rsk.co/).
 3. 📝 Follow the on-screen instructions to complete the process.
 

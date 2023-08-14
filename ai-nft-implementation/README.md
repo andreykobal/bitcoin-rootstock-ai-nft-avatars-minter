@@ -1,17 +1,17 @@
-# Crosschain AAA WEB3 Shooter Game with AI NFT Avatars on Klaytn Chain
+# AI NFT Avatars on Bitcoin
 
-![Ailand_GenArea7_Windows,_Mac,_Linux_Unity_2021_3_5f1_Personal_DX11 (65)](https://github.com/andreykobal/klaytn-ai-nft-avatars/assets/19206978/ce000957-7eab-4654-b014-51f149531d0c)
+![jpg](https://github.com/andreykobal/bitcoin-rootstock-ai-nft-avatars-minter/assets/19206978/eeeff7fc-a6c2-4439-8ae5-0c416347317b)
 
 
-Welcome to the **Crosschain AAA WEB3 Shooter Game with AI NFT Avatars on Klaytn Chain** GitHub repository! This repository contains the Unity game project along with the smart contracts used in the game. Interactive AI NFT Avatars is an exciting 3D game where players use NFT avatars, complete quests, collect diamonds, and explore magical worlds.
+Welcome to the **AI NFT Avatars on Bitcoin** GitHub repository! This repository contains the Unity game project along with the smart contracts used in the game. Interactive AI NFT Avatars is an exciting 3D game where players use NFT avatars, complete quests, collect diamonds, and explore magical worlds.
 
 ## Project Setup
 
-To set up the Interactive AI NFT Avatars on Klaytn Chain project, please follow these steps:
+To set up the AI NFT Avatars on Bitcoin project, please follow these steps:
 
 1. Clone the repository to your local machine using the following command:
    ```
-   git clone https://github.com/andreykobal/klaytn-ai-nft-avatars.git
+   git clone https://github.com/andreykobal/bitcoin-rootstock-ai-nft-avatars-minter.git
    ```
 
 2. Open the Unity game project that is located in `/unity-project` using Unity Hub or your preferred Unity editor.
@@ -22,7 +22,7 @@ To set up the Interactive AI NFT Avatars on Klaytn Chain project, please follow 
 
 5. Set up the Metamask extension in your preferred browser and create a wallet.
 
-6. Configure the Metamask wallet by connecting it to the Klaytn Baobab network and obtaining the necessary testnet tokens [Klaytn Docs](https://docs.klaytn.foundation/) 
+6. Configure the Metamask wallet by connecting it to the Bitcoin Testnet network and obtaining the necessary testnet tokens [Rootstock Docs](https://dev.rootstock.io/kb/remix-and-metamask-with-rsk-testnet/) 
 
 7. Build and run the game to start playing Interactive AI NFT Avatars!
 
@@ -39,12 +39,12 @@ MNEMONIC=privatekey. not the seedphrase
 * Edit the contractUri method in the contract and add your collection metadata URI 
 * Edit the mint script and add your token uri, contract address and account address of the account you want to mint to.
 * Compile the smart contracts with `npx hardhat compile`
-* Deploy with `npx hardhat run --network klaytnBaobab scripts/deploy721.js` for ERC-721
-* Deploy with `npx hardhat run --network klaytnBaobab scripts/deploy1155.js` for ERC-1155
-* Mint 721 with `npx hardhat run --network klaytnBaobab scripts/mint.js`
-* Mint 1155 with `npx hardhat run --network klaytnBaobab scripts/mint1155.js`
-* Check balance of ERC-1155 with `npx hardhat run --network klaytnBaobab scripts/balances.js`
-* Get metadata of ERC-721 with `npx hardhat run --network klaytnBaobab scripts/getTokensOfOwner.js`
+* Deploy with `npx hardhat run --network bitcoinTestnet scripts/deploy721.js` for ERC-721
+* Deploy with `npx hardhat run --network bitcoinTestnet scripts/deploy1155.js` for ERC-1155
+* Mint 721 with `npx hardhat run --network bitcoinTestnet scripts/mint.js`
+* Mint 1155 with `npx hardhat run --network bitcoinTestnet scripts/mint1155.js`
+* Check balance of ERC-1155 with `npx hardhat run --network bitcoinTestnet scripts/balances.js`
+* Get metadata of ERC-721 with `npx hardhat run --network bitcoinTestnet scripts/getTokensOfOwner.js`
 
 
 Contract code inspired from Opensea: https://github.com/ProjectOpenSea/meta-transactions/blob/main/contracts/ERC721MetaTransactionMaticSample.sol
@@ -142,14 +142,14 @@ Here are some C# code highlights from the Interactive AI NFT Avatars Unity proje
 ```csharp
 async public void mintItem(int avatarIndex)
 {
-    string chainId = "1001";
+    string chainId = "31";
     var tokenURI = "https://bafkreiczapdwomdlotjqt4yaojyizlgarn4kq57smi3ptkwn5lug5yz7yu.ipfs.nftstorage.link/";
 
     string contractAbi = "";
     string contractAddress = contractAddresses[avatarIndex];
     string method = "mintItem";
     
-    var provider = new JsonRpcProvider("https://public-en-baobab.klaytn.net");
+    var provider = new JsonRpcProvider("https://public-node.testnet.rsk.co");
     var contract = new Contract(contractAbi, contractAddress, provider);
     Debug.Log("Contract: " + contract);
     
@@ -174,7 +174,7 @@ async public void CheckNFTBalance(string contractAddress, int avatarIndex)
     string contractAbi = "";
     string method = "getBalance";
 
-    var provider = new JsonRpcProvider("https://public-en-baobab.klaytn.net");
+    var provider = new JsonRpcProvider("https://public-node.testnet.rsk.co");
     var contract = new Contract(contractAbi, contractAddress, provider);
     Debug.Log("Contract: " + contract);
 
@@ -201,11 +201,11 @@ async public void CheckNFTBalance(string contractAddress, int avatarIndex)
 async public void Check1155TotalBalance()
 {
     string contractAbi = "";
-    string contractAddress = "0x6721De8B1865A6cD98C64165301001B1f28B95e4";
+    string contractAddress = "0x6721De8B1865A6cD98C641653031B1f28B95e4";
     string method = "getTotalBalance";
     
     var walletAddress = PlayerPrefs.GetString("Account");
-    var provider = new JsonRpcProvider("https://public-en-baobab.klaytn.net");
+    var provider = new JsonRpcProvider("https://public-node.testnet.rsk.co");
     var contract = new Contract(contractAbi, contractAddress, provider);
     var calldata = await contract.Call(method, new object[]
     {
@@ -236,8 +236,8 @@ private async void Start()
 
 async public void Mint1155Diamonds()
 {
-    string chainId = "1001";
-    string contractAddress = "0x6721De8B1865A6cD98C64165301001B1f28B95e4";
+    string chainId = "31";
+    string contractAddress = "0x6721De8B1865A6cD98C641653031B1f28B95e4";
     string value = "0";
     string abi = "";
     string method = "batchMint";

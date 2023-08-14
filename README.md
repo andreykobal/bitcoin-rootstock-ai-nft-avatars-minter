@@ -72,7 +72,7 @@ Enjoy the magic of AI-powered avatars in the exciting world of AILAND! 🌈🎉�
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/[your_username]/ai-nft-avatar-minting.git
+git clone https://github.com/andreykobal/bitcoin-rootstock-ai-nft-avatars-minter
 ```
 
 2. Navigate to the project directory:

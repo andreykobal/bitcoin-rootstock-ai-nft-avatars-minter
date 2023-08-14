@@ -1,70 +1,129 @@
-# Getting Started with Create React App
+# AI NFT Avatar Minting Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This repository hosts a cutting-edge solution that enables users to create, mint, and interact with AI-powered NFT avatars. Using this solution, users can not only transform their selfies into animated avatars but also enhance them with custom or AI-generated traits, interact with them using voice or text, and even deploy them as skins in the game. Moreover, our solution boasts integration with the Bitcoin testnet using Rootstock - a Layer 3 scaling solution for Bitcoin, making it a unique combination of AI, NFT, and Blockchain.
 
-## Available Scripts
+<img width="1726" alt="Screenshot 2023-08-14 at 17 17 26" src="https://github.com/andreykobal/bitcoin-rootstock-ai-nft-avatars-minter/assets/19206978/30013177-c712-4869-85db-9a592f308166">
 
-In the project directory, you can run:
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Selfie to Avatar**: Instantly turn your selfie into an animated avatar.
+  
+- **Customization & Traits**: Personalize your avatar with custom traits, such as name, bio, etc. or choose from AI-generated traits to make your avatar unique.
+  
+- **Interactivity**: Engage with your avatar through voice or text commands.
+  
+- **Game Integration**: Use your minted avatar as a skin in supported games.
+  
+- **Blockchain Deployment**: Mint your AI NFT avatar directly to the Bitcoin testnet using the Rootstock layer 3 solution.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Prerequisites
 
-### `npm test`
+1. Node.js & npm
+2. MetaMask browser extension
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Setup
 
-### `npm run build`
+1. Clone the repository:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+git clone https://github.com/[your_username]/ai-nft-avatar-minting.git
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. Navigate to the project directory:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+cd ai-nft-avatar-minting
+```
 
-### `npm run eject`
+3. Install the required packages:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+npm install
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4. Create a `.env` file in the root directory and set the `REACT_APP_NFT_STORAGE_TOKEN` variable with your token from [NFT.Storage](https://nft.storage/):
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+REACT_APP_NFT_STORAGE_TOKEN=YOUR_NFT_STORAGE_TOKEN
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+5. Run the application:
 
-## Learn More
+```bash
+npm start
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Now, open your browser and navigate to `http://localhost:3000` to see the application in action!
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Code Highlights:
 
-### Code Splitting
+1. **Switching To Bitcoin Testnet Network:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+   Users have the flexibility to switch between Ethereum networks, making the platform versatile.
+   ```javascript
+   async function switchToNetwork() {
+       // Network configurations...
+       await window.ethereum.request({
+           method: 'wallet_switchEthereumChain',
+           params: [{ chainId: currentNetwork.chainId }],
+       });
+   }
+   ```
 
-### Analyzing the Bundle Size
+2. **Minting NFTs:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+   Seamless integration for minting NFTs, including error handling.
+   ```javascript
+   const mintToken = async () => {
+       if (window.ethereum) {
+           // Uploading, metadata generation and minting...
+       } else {
+           alert('Ethereum not detected! Please install and setup MetaMask.');
+       }
+   };
+   ```
 
-### Making a Progressive Web App
+3. **AI-Generated Traits:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+   Fetch random metadata generated by AI for the avatar's traits.
+   ```javascript
+   const fetchRandomData = async () => {
+       const response = await fetch("<API_URL>");
+       const content = JSON.parse(data.content);
+       setName(content.name);
+       setDescription(content.description);
+       // ... setting other attributes
+   };
+   ```
 
-### Advanced Configuration
+4. **IPFS Integration:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+   We utilize the InterPlanetary File System (IPFS) for decentralized storage.
+   ```javascript
+   const uploadFileToIPFS = async (fileOrUrl) => {
+       // ... file upload logic
+       const cid = await client.storeBlob(blob);
+       return `https://ipfs.io/ipfs/${cid}`;
+   };
+   ```
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Usage
 
-### `npm run build` fails to minify
+1. **Selfie to Avatar**: Upload your selfie and watch as it gets transformed into an animated avatar.
+2. **Traits Customization**: Personalize your avatar's traits using the sidebar. Choose custom values or click the "Randomize" button for AI-generated traits.
+3. **Mint to Blockchain**: Once satisfied, mint your avatar as an NFT to the Bitcoin testnet using Rootstock. Ensure your MetaMask is set to the correct network.
+4. **Interact & Play**: Once minted, you can engage with your avatar or use it as a skin in supported games.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Contributing
+
+Contributions are welcome! Please read the [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines on how to contribute to this project.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](./LICENSE.md) file for details.
+
+---
+
+Feel free to star this repository if you find it useful and innovative! If you face any issues, please open an issue, and we'll be happy to assist you.

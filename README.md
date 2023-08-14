@@ -13,6 +13,10 @@ This repository hosts a cutting-edge solution that enables users to create, mint
 
 ![ezgif-3-59426bab17](https://github.com/andreykobal/bitcoin-rootstock-ai-nft-avatars-minter/assets/19206978/bbae5470-7079-4aa4-b98d-7b242f3c8eea)
 
+## Demo
+
+[Mint Your AI NFT Avatar on Bitcoin Testnet](https://simple-nft-minter-xt5p.vercel.app/)
+
 
 ## Features
 

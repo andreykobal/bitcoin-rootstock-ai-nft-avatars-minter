@@ -15,7 +15,7 @@ This repository hosts a cutting-edge solution that enables users to create, mint
 
 ## Demo
 
-[🌟 **Mint Your AI-Powered Avatar on AILAND** 🌟](https://simple-nft-minter-xt5p.vercel.app/)
+[🌟 **Mint Your AI-Powered NFT Avatar on AILAND** 🌟](https://simple-nft-minter-xt5p.vercel.app/)
 
 **Step 1: Refill Your Wallet**
 1. 🛠️ Refill your Metamask wallet with testnet Rootstock tokens.

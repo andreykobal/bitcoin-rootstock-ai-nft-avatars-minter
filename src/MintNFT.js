@@ -330,7 +330,7 @@ function MintNFT() {
                     </div>
                     <div style={divStyle}>
                         <label style={labelStyle}>Description:</label>
-                        <textarea value={description} onChange={e => setDescription(e.target.value)} style={{ ...inputStyle, resize: 'none', minHeight: '100px' }} />
+                        <textarea value={description} onChange={e => setDescription(e.target.value)} style={{ ...inputStyle, resize: 'none', minHeight: '100px', fontFamily: 'Roboto, Helvetica, sans-serif'  }} />
                     </div>
                     <div style={divStyle}>
                         <label style={labelStyle}>Image:</label>

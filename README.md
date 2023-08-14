@@ -1,4 +1,4 @@
-# Minting AI-Powered NFT Avatars on Bitcoin
+# Minting AI NFT Avatars on Bitcoin
 ## Frontend, Smart Contract, Unity Integration, AI Integration and Voice Interactions
 
 This repository hosts a cutting-edge solution that enables users to create, mint, and interact with AI-powered NFT avatars on <img src="https://github.com/andreykobal/bitcoin-rootstock-ai-nft-avatars-minter/assets/19206978/22cee888-e3b9-48b3-8e93-51bec8eae4f1" width="16px"/> Bitcoin.

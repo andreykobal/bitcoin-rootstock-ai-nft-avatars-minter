@@ -8,9 +8,9 @@ const polyScan = process.env.POLYGONSCAN
 module.exports = {
   solidity: "0.8.0",
   networks: {
-    klaytnBaobab: {
-      chainId: 1001,
-      url: "https://public-en-baobab.klaytn.net",
+    bitcoinTestnet: {
+      chainId: 31,
+      url: "https://public-node.testnet.rsk.co",
       accounts: [privateKey]
     },
     goerli: {

@@ -1,6 +1,6 @@
 # AI NFT Avatars on Bitcoin Minting Frontend
 
-This repository hosts a cutting-edge solution that enables users to create, mint, and interact with AI-powered NFT avatars on <img src="https://github.com/andreykobal/bitcoin-rootstock-ai-nft-avatars-minter/assets/19206978/22cee888-e3b9-48b3-8e93-51bec8eae4f1" width="16px"/>Bitcoin network.
+This repository hosts a cutting-edge solution that enables users to create, mint, and interact with AI-powered NFT avatars on <img src="https://github.com/andreykobal/bitcoin-rootstock-ai-nft-avatars-minter/assets/19206978/22cee888-e3b9-48b3-8e93-51bec8eae4f1" width="16px"/> Bitcoin network.
 
 - Users can transform their selfies into animated avatars using this solution.
 - The avatars can be enhanced with custom or AI-generated traits, allowing for personalized customization.

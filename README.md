@@ -168,6 +168,11 @@ The server listens for POST requests to `/generate-completion` and uses the Open
    };
    ```
 
+6. **Smart Contract, Unity Integration,  AI Interactions, Speech SDK**
+
+To learn more about how we built the entire infrastructure see the code and README in this repository in the `/ai-nft-implementation` folder
+
+   [AI NFT Implementation](https://github.com/andreykobal/bitcoin-rootstock-ai-nft-avatars-minter/tree/master/ai-nft-implementation)**
 
 ## Usage
 

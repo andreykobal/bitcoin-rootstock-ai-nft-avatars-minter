@@ -191,8 +191,13 @@ function MintNFT() {
                 const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
                 const web3 = new Web3(window.ethereum);
 
-                const contractAddress = '0x9ECB90F11D7c609A9dD093f30a9201943D8036DB';
-                const contract = new web3.eth.Contract(contractABI, contractAddress);
+                const contractAddressEth = '0x9ECB90F11D7c609A9dD093f30a9201943D8036DB';
+                const contractAbiEth = contractABI.contractAbiEth;
+
+                const contractAddressBitcoin = '0xaC7e4Ad5d7557B78ebc84Dff668A06709f5Dc62B';
+                const contractAbiBitcoin = contractABI.contractAbiBitcoin;
+
+                const contract = new web3.eth.Contract(contractAbiEth, contractAddressEth);
 
                 const gasEstimate = await contract.methods.mint(accounts[0], tokenURI).estimateGas({ from: accounts[0] });
                 const gasPriceWei = '1500000000';

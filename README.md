@@ -1,6 +1,7 @@
 # AI NFT Avatar Minting Frontend
 
-- This repository hosts a cutting-edge solution that enables users to create, mint, and interact with AI-powered NFT avatars.
+This repository hosts a cutting-edge solution that enables users to create, mint, and interact with AI-powered NFT avatars.
+
 - Users can transform their selfies into animated avatars using this solution.
 - The avatars can be enhanced with custom or AI-generated traits, allowing for personalized customization.
 - Users have the option to change the avatars' appearance and clothing.

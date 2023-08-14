@@ -18,14 +18,14 @@ public class MintNFT : MonoBehaviour
 
     async public void mintItem(int avatarIndex)
     {
-        string chainId = "5611";
+        string chainId = "31";
         var tokenURI = "https://bafkreiczapdwomdlotjqt4yaojyizlgarn4kq57smi3ptkwn5lug5yz7yu.ipfs.nftstorage.link/";
 
         string contractAbi = ContractAbi.SingleChainAbi;
         string contractAddress = contractAddresses[avatarIndex];
         string method = "mintItem";
         
-        var provider = new JsonRpcProvider("https://opbnb-testnet.nodereal.io/v1/64a9df0874fb4a93b9d0a3849de012d3");
+        var provider = new JsonRpcProvider("https://public-node.testnet.rsk.co");
         var contract = new Contract(contractAbi, contractAddress, provider);
         Debug.Log("Contract: " + contract);
         

@@ -154,8 +154,8 @@ Now, open your browser and navigate to `http://localhost:3000` to see the applic
     });
     ```
 
-Explanation:
-The server listens for POST requests to `/generate-completion` and uses the OpenAI API to generate a game character based on a given context and template, then sends the response to the client.
+    Explanation:
+    The server listens for POST requests to `/generate-completion` and uses the OpenAI API to generate a game character based on a given context and template, then sends the response to the client.
 
 5. **IPFS Integration:**
 
@@ -170,9 +170,9 @@ The server listens for POST requests to `/generate-completion` and uses the Open
 
 6. **Smart Contract, Unity Integration,  AI Interactions, Speech SDK**
 
-To learn more about how we built the entire infrastructure see the code and README in this repository in the `/ai-nft-implementation` folder
+   To learn more about how we built the entire infrastructure see the code and README in this repository in the `/ai-nft-implementation` folder
 
-   [AI NFT Implementation](https://github.com/andreykobal/bitcoin-rootstock-ai-nft-avatars-minter/tree/master/ai-nft-implementation)**
+   [AI NFT Implementation](https://github.com/andreykobal/bitcoin-rootstock-ai-nft-avatars-minter/tree/master/ai-nft-implementation)
 
 ## Usage
 

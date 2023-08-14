@@ -127,7 +127,8 @@ Now, open your browser and navigate to `http://localhost:3000` to see the applic
 
 ## 🎮 Extended Features and In-Game Integration
 
-This repository isn't just about creating and minting AI-powered NFT avatars. It goes beyond the conventional by enabling a higher echelon of interaction with these NFTs in a game environment.
+This repository goes beyond a simple frontend for minting AI NFT avatars. It encompasses a comprehensive ecosystem that enables users to transform selfies into customizable avatars and interact with them through both text and voice.
+
 
 ### **Game Integration with Unity**
 Our solution integrates with Unity, allowing users to use their unique avatars as skins in the game. This personalization adds a fresh and immersive experience for users, giving real value to their NFTs beyond mere collection.
@@ -139,8 +140,9 @@ Want to communicate with your avatar? With our state-of-the-art AI integrations,
 This repository provides a comprehensive solution with full smart contract implementations tailored for the Rootstock (Layer 3 scaling solution for Bitcoin). This ensures not just a unique user experience but also a robust and secure transaction environment for minting and transferring the NFTs.
 
 ### **Learn more**
-Interested in the nuts and bolts? Head over to our detailed implementation guide:
-[AI NFT Implementation](https://github.com/andreykobal/bitcoin-rootstock-ai-nft-avatars-minter/tree/master/ai-nft-implementation)
+To explore the full implementation and delve into the specifics of the AI integration, Unity code, smart contracts, and more, check out the detailed documentation and code here:
+
+*[AI NFT Implementation](https://github.com/andreykobal/bitcoin-rootstock-ai-nft-avatars-minter/tree/master/ai-nft-implementation)*
 
 
 ![ezgif-4-3cb7c758e1](https://github.com/andreykobal/bitcoin-rootstock-ai-nft-avatars-minter/assets/19206978/0e475dea-244a-4059-b516-74b3c84ad1e7)

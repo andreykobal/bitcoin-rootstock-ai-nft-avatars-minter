@@ -131,10 +131,10 @@ This repository goes beyond a simple frontend for minting AI NFT avatars. It enc
 
 
 ### **Game Integration with Unity**
-Our solution integrates with Unity, allowing users to use their unique avatars as skins in the game. This personalization adds a fresh and immersive experience for users, giving real value to their NFTs beyond mere collection.
+Our solution integrates with Unity, allowing users to use their unique avatars as skins in the AILAND shooter game. This personalization adds a fresh and immersive experience for users, giving real value to their NFTs beyond mere collection.
 
 ### **Voice and Text Interactions with AI-Powered Avatars**
-Want to communicate with your avatar? With our state-of-the-art AI integrations, you can! Engage in text or voice chats with your avatar, opening up avenues for storytelling, gaming strategies, or simply some light-hearted fun.
+Leveraging cutting-edge AI technology for a new level of engagement with NFT avatars. Want to communicate with your avatar? With our state-of-the-art AI integrations, you can! Engage in text or voice chats with your avatar, opening up avenues for storytelling, gaming strategies, or simply some light-hearted fun.
 
 ### **Smart Contract Implementations**
 This repository provides a comprehensive solution with full smart contract implementations tailored for the Rootstock (Layer 3 scaling solution for Bitcoin). This ensures not just a unique user experience but also a robust and secure transaction environment for minting and transferring the NFTs.

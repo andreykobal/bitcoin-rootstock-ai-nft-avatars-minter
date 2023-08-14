@@ -3,6 +3,9 @@ import Web3 from 'web3';
 import contractABI from './ContractABI';
 import { NFTStorage, File, Blob } from 'nft.storage';
 
+import btcLogo from './assets/btc.png';
+import ethLogo from './assets/eth.png';
+
 const NFT_STORAGE_TOKEN = process.env.REACT_APP_NFT_STORAGE_TOKEN;
 
 function MintNFT() {
@@ -37,17 +40,17 @@ function MintNFT() {
                 console.log("Error parsing the event data.");
                 return;
             }
-    
+
             if (json.source !== "avaturn" || json.eventName !== "v2.avatar.exported") return;
-    
+
             console.log("Received an avatar GLB from Avaturn.");
             setAvaturnGLB(json.data.url);
         }
-    
+
         window.addEventListener("message", handleIframeEvent);
         return () => window.removeEventListener("message", handleIframeEvent);
     }, []);
-    
+
 
 
 
@@ -87,7 +90,7 @@ function MintNFT() {
         const cid = await client.storeBlob(blob);
         return `https://ipfs.io/ipfs/${cid}`;
     };
-    
+
 
     async function switchToNetwork() {
         const NETWORKS = {
@@ -241,23 +244,23 @@ function MintNFT() {
                     transaction.on('transactionHash', function (hash) {
                         console.log('Transaction Hash:', hash);
                     });
-    
+
                     await transaction;
                 } else if (network === 'Rootstock') {
                     // Removed the line that estimates the gas
                     const gasPriceWei = '1500000000';
                     const hardcodedGas = '300000'; // This is a standard gas limit for simple transactions, you might need to adjust this value
-                
+
                     const transaction = contract.methods.mintItem(tokenURI).send({
                         from: accounts[0],
                         gas: hardcodedGas, // Using the hardcoded gas value here
                         gasPrice: gasPriceWei
                     });
-                
+
                     transaction.on('transactionHash', function (hash) {
                         console.log('Transaction Hash:', hash);
                     });
-                
+
                     await transaction;
                 }
 
@@ -315,95 +318,116 @@ function MintNFT() {
                 ref={avaturnIframeRef}
                 src="https://demo.avaturn.dev"
                 className="iframeStyle"
-                >
+            >
             </iframe>
             <div className="sidebar">
-                <div style={{padding: '20px'}}>
-            <h1 style={{ textAlign: 'center' }}>Mint Your AI NFT Avatar</h1>
+                <div style={{ padding: '20px' }}>
+                    <h1 style={{ textAlign: 'center' }}>Mint Your AI NFT Avatar</h1>
 
-                <div style={divStyle}>
-                    <label style={labelStyle}>Name:</label>
-                    <input type="text" value={name} onChange={e => setName(e.target.value)} style={inputStyle} />
-                </div>
-                <div style={divStyle}>
-                    <label style={labelStyle}>Description:</label>
-                    <textarea value={description} onChange={e => setDescription(e.target.value)} style={{ ...inputStyle, resize: 'none', minHeight: '100px' }} />
-                </div>
-                <div style={divStyle}>
-                    <label style={labelStyle}>Image:</label>
-                    <input type="file" onChange={e => handleFileChange(e, setImageFile)} style={inputStyle} />
-                </div>
-                <div style={divStyle}>
-                    <label style={labelStyle}>GLB:</label>
-                    {
-                        avaturnGLB ?
-                            <div style={{ ...inputStyle, textAlign: 'center', lineHeight: '38px' }}>Avaturn Avatar Used</div> :
-                            <input type="file" onChange={e => handleFileChange(e, setAnimationFile)} style={inputStyle} />
-                    }
-                </div>
-
-                <div>
-                    {/* Default attributes interface */}
-                    {Object.entries(defaultAttributes).map(([traitType, value]) => (
-                        <div key={traitType} style={divStyle}>
-                            <label style={labelStyle}>{traitType}:</label>
-                            {traitType === "Voice" ? (
-                                <select
-                                    value={value}
-                                    onChange={e => handleDefaultAttributeChange(traitType, e.target.value)}
-                                    style={inputStyle}
-                                >
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
-                                    <option value="Robotic">Robotic</option>
-                                </select>
-                            ) : (
-                                <input
-                                    type="text"
-                                    value={value}
-                                    onChange={e => handleDefaultAttributeChange(traitType, e.target.value)}
-                                    style={inputStyle}
-                                />
-                            )}
-                        </div>
-                    ))}
-                </div>
-                <div>
-                    {/* Custom attributes interface */}
-                    {customAttributes.map((attribute, index) => (
-                        <div key={index} style={divStyle}>
-                            <input
-                                type="text"
-                                placeholder="Trait Type"
-                                value={attribute.trait_type}
-                                onChange={e => updateCustomAttribute(index, "trait_type", e.target.value)}
-                                style={inputStyle}
-                            />
-                            <input
-                                type="text"
-                                placeholder="Value"
-                                value={attribute.value}
-                                onChange={e => updateCustomAttribute(index, "value", e.target.value)}
-                                style={inputStyle}
-                            />
-                        </div>
-                    ))}
-                    {/*<button onClick={addCustomAttribute}>Add Custom Trait</button>*/}
-                </div>
-
-                <div>
-                        <label>Select Network:</label>
-                        <input type="radio" value="Goerli" checked={network === 'Goerli'} onChange={() => setNetwork('Goerli')} /> Ethereum
-                        <input type="radio" value="Rootstock" checked={network === 'Rootstock'} onChange={() => setNetwork('Rootstock')} /> Bitcoin
+                    <div style={divStyle}>
+                        <label style={labelStyle}>Name:</label>
+                        <input type="text" value={name} onChange={e => setName(e.target.value)} style={inputStyle} />
+                    </div>
+                    <div style={divStyle}>
+                        <label style={labelStyle}>Description:</label>
+                        <textarea value={description} onChange={e => setDescription(e.target.value)} style={{ ...inputStyle, resize: 'none', minHeight: '100px' }} />
+                    </div>
+                    <div style={divStyle}>
+                        <label style={labelStyle}>Image:</label>
+                        <input type="file" onChange={e => handleFileChange(e, setImageFile)} style={inputStyle} />
+                    </div>
+                    <div style={divStyle}>
+                        <label style={labelStyle}>GLB:</label>
+                        {
+                            avaturnGLB ?
+                                <div style={{ ...inputStyle, textAlign: 'center', lineHeight: '38px' }}>Avaturn Avatar Used</div> :
+                                <input type="file" onChange={e => handleFileChange(e, setAnimationFile)} style={inputStyle} />
+                        }
                     </div>
 
+                    <div>
+                        {/* Default attributes interface */}
+                        {Object.entries(defaultAttributes).map(([traitType, value]) => (
+                            <div key={traitType} style={divStyle}>
+                                <label style={labelStyle}>{traitType}:</label>
+                                {traitType === "Voice" ? (
+                                    <select
+                                        value={value}
+                                        onChange={e => handleDefaultAttributeChange(traitType, e.target.value)}
+                                        style={inputStyle}
+                                    >
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Robotic">Robotic</option>
+                                    </select>
+                                ) : (
+                                    <input
+                                        type="text"
+                                        value={value}
+                                        onChange={e => handleDefaultAttributeChange(traitType, e.target.value)}
+                                        style={inputStyle}
+                                    />
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                    <div>
+                        {/* Custom attributes interface */}
+                        {customAttributes.map((attribute, index) => (
+                            <div key={index} style={divStyle}>
+                                <input
+                                    type="text"
+                                    placeholder="Trait Type"
+                                    value={attribute.trait_type}
+                                    onChange={e => updateCustomAttribute(index, "trait_type", e.target.value)}
+                                    style={inputStyle}
+                                />
+                                <input
+                                    type="text"
+                                    placeholder="Value"
+                                    value={attribute.value}
+                                    onChange={e => updateCustomAttribute(index, "value", e.target.value)}
+                                    style={inputStyle}
+                                />
+                            </div>
+                        ))}
+                        {/*<button onClick={addCustomAttribute}>Add Custom Trait</button>*/}
+                    </div>
 
-                <button style={randomizeButtonStyle} onClick={fetchRandomData}>Randomize</button>
-                <button onClick={mintToken}>Mint</button>
+                    <div>
 
-                <div>{uploadStatus}</div>
-                <div>{generatingStatus}</div>
-            </div>
+                        <div style={{ display: 'flex', alignItems: 'center' }}>
+                            <label style={{ display: 'flex', alignItems: 'center', marginRight: '16px' }}>Select Network:</label>
+                            <label style={{ display: 'flex', alignItems: 'center', marginRight: '16px' }}>
+                                <input
+                                    type="radio"
+                                    value="Goerli"
+                                    checked={network === 'Goerli'}
+                                    onChange={() => setNetwork('Goerli')}
+                                    style={{ marginRight: '5px' }}
+                                />
+                                <img src={ethLogo} alt="Ethereum logo" style={{ width: '20px', marginRight: '5px' }} /> Ethereum
+                            </label>
+
+                            <label style={{ display: 'flex', alignItems: 'center' }}>
+                                <input
+                                    type="radio"
+                                    value="Rootstock"
+                                    checked={network === 'Rootstock'}
+                                    onChange={() => setNetwork('Rootstock')}
+                                    style={{ marginRight: '5px' }}
+                                />
+                                <img src={btcLogo} alt="Bitcoin logo" style={{ width: '20px', marginRight: '5px' }} /> Bitcoin
+                            </label>
+                        </div>                    </div>
+
+
+                    <button style={randomizeButtonStyle} onClick={fetchRandomData}>Randomize</button>
+                    <button onClick={mintToken}>Mint</button>
+
+                    <div>{uploadStatus}</div>
+                    <div>{generatingStatus}</div>
+                </div>
             </div>
         </div>
     );

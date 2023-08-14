@@ -116,6 +116,9 @@ Now, open your browser and navigate to `http://localhost:3000` to see the applic
 3. **Mint to Blockchain**: Once satisfied, mint your avatar as an NFT to the Bitcoin testnet using Rootstock. Ensure your MetaMask is set to the correct network.
 4. **Interact & Play**: Once minted, you can engage with your avatar or use it as a skin in supported games.
 
+![ezgif-4-3cb7c758e1](https://github.com/andreykobal/bitcoin-rootstock-ai-nft-avatars-minter/assets/19206978/0e475dea-244a-4059-b516-74b3c84ad1e7)
+
+
 ## Contributing
 
 Contributions are welcome! Please read the [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines on how to contribute to this project.

@@ -1,7 +1,7 @@
 # Minting AI NFT Avatars on Bitcoin
 ## Frontend, Smart Contract, Unity Integration, AI Integration and Voice Interactions
 
-This repository hosts a cutting-edge solution that enables users to create, mint, and interact with AI-powered NFT avatars on <img src="https://github.com/andreykobal/bitcoin-rootstock-ai-nft-avatars-minter/assets/19206978/22cee888-e3b9-48b3-8e93-51bec8eae4f1" width="16px"/> Bitcoin.
+This repository hosts a cutting-edge solution that enables users to create, mint, and interact with AI NFT avatars on <img src="https://github.com/andreykobal/bitcoin-rootstock-ai-nft-avatars-minter/assets/19206978/22cee888-e3b9-48b3-8e93-51bec8eae4f1" width="16px"/> Bitcoin.
 
 - Users can transform their selfies into animated avatars using this solution.
 - The avatars can be enhanced with custom or AI-generated traits, allowing for personalized customization.
@@ -17,7 +17,7 @@ This repository hosts a cutting-edge solution that enables users to create, mint
 
 ## Demo
 
-[🌟 **Mint Your AI-Powered NFT Avatar on AILAND** 🌟](https://simple-nft-minter-xt5p.vercel.app/)
+[🌟 **Mint Your AI NFT Avatar on AILAND** 🌟](https://simple-nft-minter-xt5p.vercel.app/)
 
 **Step 1: Refill Your Wallet**
 1. 🛠️ Refill your Metamask wallet with testnet Rootstock tokens.

@@ -14,6 +14,9 @@ This repository hosts a cutting-edge solution that enables users to create, mint
 
 ![ezgif-2-13fe487f03](https://github.com/andreykobal/bitcoin-rootstock-ai-nft-avatars-minter/assets/19206978/fececf5c-be4e-42e2-a2c7-289f80d5ba1f)
 
+## Video Demo 
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/T9QJgNFNJIE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## Demo
 

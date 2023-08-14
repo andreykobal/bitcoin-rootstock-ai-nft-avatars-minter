@@ -1,6 +1,6 @@
 # AI NFT Avatars on Bitcoin Minting Frontend
 
-This repository hosts a cutting-edge solution that enables users to create, mint, and interact with AI-powered NFT avatars on Bitcoin network.
+This repository hosts a cutting-edge solution that enables users to create, mint, and interact with AI-powered NFT avatars on  Bitcoin network.
 
 - Users can transform their selfies into animated avatars using this solution.
 - The avatars can be enhanced with custom or AI-generated traits, allowing for personalized customization.

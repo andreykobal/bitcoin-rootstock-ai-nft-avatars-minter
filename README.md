@@ -25,21 +25,19 @@ This repository hosts a cutting-edge solution that enables users to create, mint
 **Step 2: Create Your Avatar**
 1. 📸 Use your selfies to make a personalized avatar.
 2. 🧑‍🎨 Customize its appearance and clothes to your liking.
+3. 🔍 Click 'Next' and watch for the message 'Avaturn avatar used' in the GLB input field.
 
-**Step 3: Avaturn Time**
-1. 🔍 Click 'Next' and watch for the message 'Avaturn avatar used' in the GLB input field.
-
-**Step 4: Add Personality**
+**Step 3: Add Personality**
 1. 🧠 Fill in avatar's personality details in the form.
 2. 🎲 Or click 'Randomize' for an AI-generated personality.
 
-**Step 5: Choose Network**
+**Step 4: Choose Network**
 1. ⚡ Select the Bitcoin network from the options.
 
-**Step 6: Mint Your Avatar**
+**Step 5: Mint Your Avatar**
 1. 💎 Click 'Mint' and confirm the transaction in your Metamask wallet.
 
-**Step 7: Let the Fun Begin!**
+**Step 6: Let the Fun Begin!**
 1. 🎮 Use your avatar in AILAND game for immersive interactions.
 2. 💬 Engage via text or voice interactions.
 3. 👾 Also use your avatar as a skin in the game for a unique experience.

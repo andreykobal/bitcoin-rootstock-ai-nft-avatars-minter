@@ -11,7 +11,8 @@ This repository hosts a cutting-edge solution that enables users to create, mint
 - Rootstock, a Layer 3 scaling solution for Bitcoin, facilitates the integration with the testnet.
 - This integration creates a unique combination of AI, NFT, and Blockchain technologies.
 
-![ezgif-3-59426bab17](https://github.com/andreykobal/bitcoin-rootstock-ai-nft-avatars-minter/assets/19206978/bbae5470-7079-4aa4-b98d-7b242f3c8eea)
+![ezgif-2-13fe487f03](https://github.com/andreykobal/bitcoin-rootstock-ai-nft-avatars-minter/assets/19206978/fececf5c-be4e-42e2-a2c7-289f80d5ba1f)
+
 
 ## Demo
 

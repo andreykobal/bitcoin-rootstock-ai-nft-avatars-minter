@@ -95,6 +95,11 @@ REACT_APP_NFT_STORAGE_TOKEN=YOUR_NFT_STORAGE_TOKEN
 npm start
 ```
 
+6. Build for production use
+```bash
+npm run build
+```
+
 Now, open your browser and navigate to `http://localhost:3000` to see the application in action!
 
 ## Code Highlights:

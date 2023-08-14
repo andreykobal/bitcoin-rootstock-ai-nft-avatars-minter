@@ -52,7 +52,7 @@ body {
 }
 
 button {
-  width: 100%;
+  width: 66%;
   box-sizing: border-box;
   font-family: inherit;
   margin: 0;
@@ -62,14 +62,14 @@ button {
   border-radius: 9999px;
   border-width: 0;
   background-color: #fc0ff54d;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-top: 0.7rem;
+  padding-bottom: 0.7rem;
   text-transform: uppercase;
   --tw-text-opacity: 1;
   color: rgb(255 255 255/var(--tw-text-opacity));
-  padding-left: 5rem;
-  padding-right: 5rem;
-  font-size: 18px;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  font-size: 16px;
   margin-top: 16px;
 }
 

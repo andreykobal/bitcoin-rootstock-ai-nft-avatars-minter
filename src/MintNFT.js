@@ -294,13 +294,13 @@ function MintNFT() {
 
     const inputStyle = {
         width: '100%',
-        padding: '8px',
+        padding: '4px',
         boxSizing: 'border-box',
         backgroundColor: 'rgba(255, 255, 255, 0.1)',
         color: 'white',
         border: 'none',
         borderRadius: '4px',
-        height: '40px',
+        height: '30px',
     };
 
     const divStyle = {
@@ -396,8 +396,8 @@ function MintNFT() {
 
                     <div>
 
-                        <div style={{ display: 'flex', alignItems: 'center' }}>
-                            <label style={{ display: 'flex', alignItems: 'center', marginRight: '16px' }}>Select Network:</label>
+                        <div style={{ display: 'flex', alignItems: 'center', fontSize: '14px' }}>
+                            <label style={{ display: 'flex', alignItems: 'center', marginRight: '16px' }}><b>Select Network:</b></label>
                             <label style={{ display: 'flex', alignItems: 'center', marginRight: '16px' }}>
                                 <input
                                     type="radio"
@@ -421,12 +421,12 @@ function MintNFT() {
                             </label>
                         </div>                    </div>
 
-
+                    <div style={{textAlign: 'center'}}>
                     <button style={randomizeButtonStyle} onClick={fetchRandomData}>Randomize</button>
                     <button onClick={mintToken}>Mint</button>
-
                     <div>{uploadStatus}</div>
                     <div>{generatingStatus}</div>
+                    </div>
                 </div>
             </div>
         </div>

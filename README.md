@@ -1,4 +1,4 @@
-# AI NFT Avatar Minting Frontend
+# AI NFT Avatars on Bitcoin Minting Frontend
 
 This repository hosts a cutting-edge solution that enables users to create, mint, and interact with AI-powered NFT avatars.
 

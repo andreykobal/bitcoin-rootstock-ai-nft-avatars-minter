@@ -25,6 +25,9 @@ function MintNFT() {
     const [avaturnGLB, setAvaturnGLB] = useState(null);
     const avaturnIframeRef = useRef(null);
 
+    const [network, setNetwork] = useState('Goerli');  // New state to manage chosen network
+
+
     useEffect(() => {
         function handleIframeEvent(event) {
             let json;
@@ -86,35 +89,50 @@ function MintNFT() {
     };
     
 
-    async function switchToGoerli() {
+    async function switchToNetwork() {
+        const NETWORKS = {
+            'Goerli': {
+                chainId: '0x5',
+                chainName: 'Goerli',
+                nativeCurrency: {
+                    name: 'ETH',
+                    symbol: 'ETH',
+                    decimals: 18
+                },
+                rpcUrls: ['https://goerli.infura.io/v3/076e36dcd6c6468da918dd54435a94f9'],
+                blockExplorerUrls: ['https://goerli.etherscan.io/']
+            },
+            'Rootstock': {
+                chainId: '0x1F',
+                chainName: 'RSK Testnet',
+                nativeCurrency: {
+                    name: 'tRBTC',
+                    symbol: 'tRBTC',
+                    decimals: 18
+                },
+                rpcUrls: ['https://public-node.testnet.rsk.co'],
+                blockExplorerUrls: ['https://explorer.testnet.rsk.co']
+            }
+        };
+
+        const currentNetwork = NETWORKS[network];
         try {
-            const CHAIN_ID = '0x5'; // Goerli Test Network
             await window.ethereum.request({
                 method: 'wallet_switchEthereumChain',
-                params: [{ chainId: CHAIN_ID }],
+                params: [{ chainId: currentNetwork.chainId }],
             });
         } catch (switchError) {
             if (switchError.code === 4902) {
                 try {
                     await window.ethereum.request({
                         method: 'wallet_addEthereumChain',
-                        params: [{
-                            chainId: '0x5',
-                            chainName: 'Goerli',
-                            nativeCurrency: {
-                                name: 'ETH',
-                                symbol: 'ETH',
-                                decimals: 18
-                            },
-                            rpcUrls: ['https://goerli.infura.io/v3/076e36dcd6c6468da918dd54435a94f9'], // replace with your Infura Project ID
-                            blockExplorerUrls: ['https://goerli.etherscan.io/'],
-                        }],
+                        params: [currentNetwork],
                     });
                 } catch (addError) {
-                    console.error('Failed to add Goerli network', addError);
+                    console.error(`Failed to add ${network} network`, addError);
                 }
             } else {
-                console.error('Failed to switch to Goerli network', switchError);
+                console.error(`Failed to switch to ${network} network`, switchError);
             }
         }
     }
@@ -156,8 +174,9 @@ function MintNFT() {
     const mintToken = async () => {
         if (window.ethereum) {
             try {
-                // Switch to Goerli Test Network
-                await switchToGoerli();
+
+                // Switch to chosen network
+                await switchToNetwork();
 
                 setUploadStatus("Uploading metadata...");
 
@@ -197,22 +216,52 @@ function MintNFT() {
                 const contractAddressBitcoin = '0xaC7e4Ad5d7557B78ebc84Dff668A06709f5Dc62B';
                 const contractAbiBitcoin = contractABI.contractAbiBitcoin;
 
-                const contract = new web3.eth.Contract(contractAbiEth, contractAddressEth);
+                // Choose the right contract and ABI based on network
+                let chosenContractAddress, chosenContractABI;
+                if (network === 'Goerli') {
+                    chosenContractAddress = contractAddressEth;
+                    chosenContractABI = contractAbiEth;
+                } else if (network === 'Rootstock') {
+                    chosenContractAddress = contractAddressBitcoin;
+                    chosenContractABI = contractAbiBitcoin;
+                }
 
-                const gasEstimate = await contract.methods.mint(accounts[0], tokenURI).estimateGas({ from: accounts[0] });
-                const gasPriceWei = '1500000000';
+                const contract = new web3.eth.Contract(chosenContractABI, chosenContractAddress);
 
-                const transaction = contract.methods.mint(accounts[0], tokenURI).send({
-                    from: accounts[0],
-                    gas: gasEstimate,
-                    gasPrice: gasPriceWei
-                });
+                if (network === 'Goerli') {
+                    const gasEstimate = await contract.methods.mint(accounts[0], tokenURI).estimateGas({ from: accounts[0] });
+                    const gasPriceWei = '1500000000';
 
-                transaction.on('transactionHash', function (hash) {
-                    console.log('Transaction Hash:', hash);
-                });
+                    const transaction = contract.methods.mint(accounts[0], tokenURI).send({
+                        from: accounts[0],
+                        gas: gasEstimate,
+                        gasPrice: gasPriceWei
+                    });
 
-                await transaction;
+                    transaction.on('transactionHash', function (hash) {
+                        console.log('Transaction Hash:', hash);
+                    });
+    
+                    await transaction;
+                } else if (network === 'Rootstock') {
+                    // Removed the line that estimates the gas
+                    const gasPriceWei = '1500000000';
+                    const hardcodedGas = '300000'; // This is a standard gas limit for simple transactions, you might need to adjust this value
+                
+                    const transaction = contract.methods.mintItem(tokenURI).send({
+                        from: accounts[0],
+                        gas: hardcodedGas, // Using the hardcoded gas value here
+                        gasPrice: gasPriceWei
+                    });
+                
+                    transaction.on('transactionHash', function (hash) {
+                        console.log('Transaction Hash:', hash);
+                    });
+                
+                    await transaction;
+                }
+
+
 
                 setUploadStatus(""); // Reset the status
 
@@ -341,6 +390,13 @@ function MintNFT() {
                     ))}
                     {/*<button onClick={addCustomAttribute}>Add Custom Trait</button>*/}
                 </div>
+
+                <div>
+                        <label>Select Network:</label>
+                        <input type="radio" value="Goerli" checked={network === 'Goerli'} onChange={() => setNetwork('Goerli')} /> Ethereum
+                        <input type="radio" value="Rootstock" checked={network === 'Rootstock'} onChange={() => setNetwork('Rootstock')} /> Bitcoin
+                    </div>
+
 
                 <button style={randomizeButtonStyle} onClick={fetchRandomData}>Randomize</button>
                 <button onClick={mintToken}>Mint</button>

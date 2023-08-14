@@ -5,6 +5,7 @@ import { NFTStorage, File, Blob } from 'nft.storage';
 
 import btcLogo from './assets/btc.png';
 import ethLogo from './assets/eth.png';
+import logo from './assets/logo.png';
 
 const NFT_STORAGE_TOKEN = process.env.REACT_APP_NFT_STORAGE_TOKEN;
 
@@ -321,13 +322,14 @@ function MintNFT() {
             >
             </iframe>
             <div className="sidebar">
-                <div style={{ padding: '20px' }}>
-                    <h1 style={{ textAlign: 'center' }}>Mint Your AI NFT Avatar</h1>
+                <div style={{ padding: '20px', textAlign: 'center'  }}>
+                    <img src={logo} alt="logo" style={{ width: '150px' }} /> 
+                    <h1 style={{ textAlign: 'center', fontSize: '28px', lineHeight: '32px', margin: '8px 0'}}>Mint Your AI NFT Avatar</h1>
 
                     <div style={divStyle}>
                         <label style={labelStyle}>Name:</label>
                         <input type="text" value={name} onChange={e => setName(e.target.value)} style={inputStyle} />
-                    </div>
+                    </div>  
                     <div style={divStyle}>
                         <label style={labelStyle}>Description:</label>
                         <textarea value={description} onChange={e => setDescription(e.target.value)} style={{ ...inputStyle, resize: 'none', minHeight: '100px', fontFamily: 'Roboto, Helvetica, sans-serif'  }} />

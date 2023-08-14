@@ -340,7 +340,7 @@ function MintNFT() {
                         <label style={labelStyle}>GLB:</label>
                         {
                             avaturnGLB ?
-                                <div style={{ ...inputStyle, textAlign: 'center', lineHeight: '38px' }}>Avaturn Avatar Used</div> :
+                                <div style={{ ...inputStyle, textAlign: 'center', lineHeight: '18px', fontSize: '14px' }}>Avaturn Avatar Used</div> :
                                 <input type="file" onChange={e => handleFileChange(e, setAnimationFile)} style={inputStyle} />
                         }
                     </div>

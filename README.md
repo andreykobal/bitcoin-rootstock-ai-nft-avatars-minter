@@ -140,9 +140,7 @@ Want to communicate with your avatar? With our state-of-the-art AI integrations,
 This repository provides a comprehensive solution with full smart contract implementations tailored for the Rootstock (Layer 3 scaling solution for Bitcoin). This ensures not just a unique user experience but also a robust and secure transaction environment for minting and transferring the NFTs.
 
 ### **Learn more**
-To explore the full implementation and delve into the specifics of the AI integration, Unity code, smart contracts, and more, check out the detailed documentation and code here:
-
-*[AI NFT Implementation](https://github.com/andreykobal/bitcoin-rootstock-ai-nft-avatars-minter/tree/master/ai-nft-implementation)*
+To explore the full implementation and delve into the specifics of the AI integration, Unity code, smart contracts, and more, check out the detailed documentation and code **here:** **[AI NFT Implementation](https://github.com/andreykobal/bitcoin-rootstock-ai-nft-avatars-minter/tree/master/ai-nft-implementation)**
 
 
 ![ezgif-4-3cb7c758e1](https://github.com/andreykobal/bitcoin-rootstock-ai-nft-avatars-minter/assets/19206978/0e475dea-244a-4059-b516-74b3c84ad1e7)

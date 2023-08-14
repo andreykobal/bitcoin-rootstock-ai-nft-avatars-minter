@@ -2,7 +2,7 @@
 
 This repository hosts a cutting-edge solution that enables users to create, mint, and interact with AI-powered NFT avatars. Using this solution, users can not only transform their selfies into animated avatars but also enhance them with custom or AI-generated traits, interact with them using voice or text, and even deploy them as skins in the game. Moreover, our solution boasts integration with the Bitcoin testnet using Rootstock - a Layer 3 scaling solution for Bitcoin, making it a unique combination of AI, NFT, and Blockchain.
 
-<img width="1726" alt="Screenshot 2023-08-14 at 17 17 26" src="https://github.com/andreykobal/bitcoin-rootstock-ai-nft-avatars-minter/assets/19206978/30013177-c712-4869-85db-9a592f308166">
+![ezgif-3-59426bab17](https://github.com/andreykobal/bitcoin-rootstock-ai-nft-avatars-minter/assets/19206978/bbae5470-7079-4aa4-b98d-7b242f3c8eea)
 
 
 ## Features

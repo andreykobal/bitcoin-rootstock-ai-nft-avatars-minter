@@ -15,7 +15,36 @@ This repository hosts a cutting-edge solution that enables users to create, mint
 
 ## Demo
 
-[Mint Your AI NFT Avatar on Bitcoin Testnet](https://simple-nft-minter-xt5p.vercel.app/)
+[🌟 **Mint Your AI-Powered Avatar on AILAND** 🌟](https://simple-nft-minter-xt5p.vercel.app/)
+
+**Step 1: Refill Your Wallet**
+1. 🛠️ Refill your Metamask wallet with testnet Rootstock tokens.
+2. 🔗 Visit [faucet.rsk.co](https://faucet.rsk.co/).
+3. 📝 Follow the on-screen instructions to complete the process.
+
+**Step 2: Create Your Avatar**
+1. 📸 Use your selfies to make a personalized avatar.
+2. 🧑‍🎨 Customize its appearance and clothes to your liking.
+
+**Step 3: Avaturn Time**
+1. 🔍 Click 'Next' and watch for the message 'Avaturn avatar used' in the GLB input field.
+
+**Step 4: Add Personality**
+1. 🧠 Fill in avatar's personality details in the form.
+2. 🎲 Or click 'Randomize' for an AI-generated personality.
+
+**Step 5: Choose Network**
+1. ⚡ Select the Bitcoin network from the options.
+
+**Step 6: Mint Your Avatar**
+1. 💎 Click 'Mint' and confirm the transaction in your Metamask wallet.
+
+**Step 7: Let the Fun Begin!**
+1. 🎮 Use your avatar in AILAND game for immersive interactions.
+2. 💬 Engage via text or voice interactions.
+3. 👾 Also use your avatar as a skin in the game for a unique experience.
+
+Enjoy the magic of AI-powered avatars in the exciting world of AILAND! 🌈🎉🚀
 
 
 ## Features

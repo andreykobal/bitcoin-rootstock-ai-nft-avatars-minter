@@ -138,7 +138,21 @@ Now, open your browser and navigate to `http://localhost:3000` to see the applic
    };
    ```
 
-4. **IPFS Integration:**
+   `server.js`
+   The server listens for POST requests to /generate-completion and uses the OpenAI API to generate a game character based on a given context and template, then sends the response to the client.
+    ```javascript
+    app.post('/generate-completion', async (req, res) => {
+        // ...
+        const chatCompletion = await openai.createChatCompletion({ /*...*/ });
+        res.json(chatCompletion.data.choices[0].message);
+        // ...
+    });
+    ```
+
+Explanation:
+The server listens for POST requests to `/generate-completion` and uses the OpenAI API to generate a game character based on a given context and template, then sends the response to the client.
+
+5. **IPFS Integration:**
 
    We utilize the InterPlanetary File System (IPFS) for decentralized storage.
    ```javascript

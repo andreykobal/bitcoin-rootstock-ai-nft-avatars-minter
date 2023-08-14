@@ -5,8 +5,8 @@ This repository hosts a cutting-edge solution that enables users to create, mint
 - Users can transform their selfies into animated avatars using this solution.
 - The avatars can be enhanced with custom or AI-generated traits, allowing for personalized customization.
 - Users have the option to change the avatars' appearance and clothing.
-- Interaction with avatars is possible through voice or text commands.
 - The avatars can be used as skins in a next-generation shooter game [AILAND](https://ailand.app).
+- Interaction with avatars in the game is possible through voice or text commands.
 - The solution integrates with the Bitcoin testnet.
 - Rootstock, a Layer 3 scaling solution for Bitcoin, facilitates the integration with the testnet.
 - This integration creates a unique combination of AI, NFT, and Blockchain technologies.
